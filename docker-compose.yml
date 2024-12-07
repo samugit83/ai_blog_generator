@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  blog_generator:
+    build: .
+    container_name: blog_generator
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - HUGGINGFACE_API_TOKEN=${HUGGINGFACE_API_TOKEN}
+    volumes:
+      - ./main.py:/app/main.py
+      - ./output:/app/output
+    stdin_open: true  # Add this line
+    tty: true
